@@ -3,6 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const postRoutes = require('./routes/posts');
+
+
 
 // Importăm rutele de autentificare
 const authRoutes = require('./routes/auth');
@@ -24,6 +27,8 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Definim ruta pentru autentificare
 app.use('/api/auth', authRoutes);
+
+app.use('/api/posts', postRoutes);
 
 // Pornim serverul pe portul specificat în variabilele de mediu sau pe portul 5000
 const PORT = process.env.PORT || 5000;

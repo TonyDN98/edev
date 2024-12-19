@@ -91,6 +91,52 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// Actualizează o postare (doar autorul poate face asta)
+router.put('/:id', auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+
+        if (!post) {
+            return res.status(404).json({ msg: "Postare nu a fost găsită" });
+        }
+
+        // Verificăm dacă utilizatorul este autorul postării
+        if (post.author.toString() !== req.user.id) {
+            return res.status(403).json({ msg: "Nu aveți permisiunea să editați această postare" });
+        }
+
+        // Actualizăm titlul și conținutul postării
+        post.title = req.body.title || post.title;
+        post.content = req.body.content || post.content;
+
+        await post.save();
+        res.json(post);
+    } catch (err) {
+        res.status(500).send("Eroare de server");
+    }
+});
+
+// Șterge o postare (doar autorul poate face asta)
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+
+        if (!post) {
+            return res.status(404).json({ msg: "Postare nu a fost găsită" });
+        }
+
+        // Verificăm dacă utilizatorul este autorul postării
+        if (post.author.toString() !== req.user.id) {
+            return res.status(403).json({ msg: "Nu aveți permisiunea să ștergeți această postare" });
+        }
+
+        await post.remove();
+        res.json({ msg: "Postare ștearsă cu succes" });
+    } catch (err) {
+        res.status(500).send("Eroare de server");
+    }
+});
+
 
 
 module.exports = router;

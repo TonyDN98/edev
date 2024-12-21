@@ -137,6 +137,54 @@ router.delete('/:id', auth, async (req, res) => {
     }
 });
 
+// Adaugă like unei postări
+router.post('/:id/like', auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (!post) return res.status(404).json({ msg: "Postare nu a fost găsită" });
+
+        // Verificăm dacă utilizatorul a dat deja like
+        if (post.likes.includes(req.user.id)) {
+            return res.status(400).json({ msg: "Ai dat deja like acestei postări" });
+        }
+
+        // Eliminăm utilizatorul din dislike-uri dacă există
+        post.dislikes = post.dislikes.filter(userId => userId.toString() !== req.user.id);
+
+        // Adăugăm utilizatorul în like-uri
+        post.likes.push(req.user.id);
+        await post.save();
+
+        res.json(post);
+    } catch (err) {
+        res.status(500).send("Eroare de server");
+    }
+});
+
+// Adaugă dislike unei postări
+router.post('/:id/dislike', auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (!post) return res.status(404).json({ msg: "Postare nu a fost găsită" });
+
+        // Verificăm dacă utilizatorul a dat deja dislike
+        if (post.dislikes.includes(req.user.id)) {
+            return res.status(400).json({ msg: "Ai dat deja dislike acestei postări" });
+        }
+
+        // Eliminăm utilizatorul din like-uri dacă există
+        post.likes = post.likes.filter(userId => userId.toString() !== req.user.id);
+
+        // Adăugăm utilizatorul în dislike-uri
+        post.dislikes.push(req.user.id);
+        await post.save();
+
+        res.json(post);
+    } catch (err) {
+        res.status(500).send("Eroare de server");
+    }
+});
+
 
 
 module.exports = router;

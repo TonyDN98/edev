@@ -41,7 +41,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-gray-800 text-white py-4">
+        <footer className="bg-primary-dark text-white py-6 w-full">
             <div className="container mx-auto text-center sm:text-left">
                 <div className="sm:flex sm:justify-between sm:items-center">
                     <p className="text-sm">
@@ -50,13 +50,13 @@ const Footer: React.FC = () => {
                     <div className="mt-2 sm:mt-0">
                         <a
                             href="#"
-                            className="text-blue-400 hover:underline mx-2 block sm:inline"
+                            className="text-secondary hover:underline mx-2 block sm:inline"
                         >
                             Termeni și Condiții
                         </a>
                         <a
                             href="#"
-                            className="text-blue-400 hover:underline mx-2 block sm:inline"
+                            className="text-secondary hover:underline mx-2 block sm:inline"
                         >
                             Politica de Confidențialitate
                         </a>

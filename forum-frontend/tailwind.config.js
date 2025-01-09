@@ -7,29 +7,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          light: "#6FB3B8", // O nuanță mai deschisă
-          DEFAULT: "#2C6975", // Culoarea principală
-          dark: "#1B3B4F", // O nuanță mai închisă
-        },
-        secondary: {
-          light: "#F3E9D2",
-          DEFAULT: "#D9BF77",
-          dark: "#A68435",
-        },
-        accent: "#F26D21",
-      },
-      fontFamily: {
-        sans: ["Roboto", "Arial", "sans-serif"], // Font principal
-        heading: ["Montserrat", "sans-serif"], // Font pentru titluri
+        primary: '#0D6EFD',
+        'primary-dark': '#084298',
+        'primary-light': '#B3D4FC',
+        secondary: '#6C757D',
+        'gray-dark': '#343A40',
+        'gray-light': '#F8F9FA',
       },
       spacing: {
-        128: "32rem", // Adăugăm spațieri personalizate
-        144: "36rem",
+        '5': '1.25rem',
+        '7': '1.75rem',
+        '15': '3.75rem',
       },
-      borderRadius: {
-        xl: "1rem", // Colțuri rotunjite personalizate
-        "2xl": "1.5rem",
+      fontFamily: {
+        sans: ['Roboto', 'Arial', 'sans-serif'],
       },
     },
   },

@@ -1,48 +1,4 @@
-// import React from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-//
-// const Navbar: React.FC = () => {
-//     const navigate = useNavigate();
-//     const token = localStorage.getItem('token');
-//
-//     const handleLogout = () => {
-//         localStorage.removeItem('token');
-//         navigate('/login');
-//     };
-//
-//     return (
-//         <nav className="bg-blue-500 text-white p-4">
-//             <div className="container mx-auto flex justify-between items-center">
-//                 <Link to="/" className="text-2xl font-bold hover:text-gray-200">
-//                     Forum
-//                 </Link>
-//                 <div className="flex items-center space-x-4">
-//                     {!token ? (
-//                         <>
-//                             <Link to="/login" className="hover:text-gray-200">
-//                                 Login
-//                             </Link>
-//                             <Link to="/register" className="hover:text-gray-200">
-//                                 Register
-//                             </Link>
-//                         </>
-//                     ) : (
-//                         <>
-//                             <button
-//                                 onClick={handleLogout}
-//                                 className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
-//                             >
-//                                 Logout
-//                             </button>
-//                         </>
-//                     )}
-//                 </div>
-//             </div>
-//         </nav>
-//     );
-// };
-//
-// export default Navbar;
+
 // import React, { useState } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 //
@@ -115,9 +71,9 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className="bg-primary text-white p-4 shadow-lg w-full">
-            <div className="container mx-auto flex justify-between items-center">
-                <Link to="/" className="text-3xl font-heading hover:text-accent">
+        <nav className="bg-primary text-white p-5 flex justify-between items-center">
+            <div className="container mx-auto flex justify-between items-center text-2xl font-bold">
+                <Link to="/" className="text-3xl font-heading hover:text-accent ">
                     Forum
                 </Link>
 
@@ -131,14 +87,14 @@ const Navbar: React.FC = () => {
                 <div
                     className={`${
                         isMenuOpen ? 'block' : 'hidden'
-                    } md:flex md:items-center space-x-4`}
+                    } md:flex md: space-x-5`}
                 >
                     {!token ? (
                         <>
-                            <Link to="/login" className="hover:text-secondary-light">
+                            <Link to="/login" className="hover:hover:underline">
                                 Login
                             </Link>
-                            <Link to="/register" className="hover:text-secondary-light">
+                            <Link to="/register" className="hover:underline">
                                 Register
                             </Link>
                         </>
